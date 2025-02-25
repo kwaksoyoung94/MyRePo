@@ -1,27 +1,38 @@
-# 빼기 함수
+# 오류 메시지 상수
+DIVIDE_BY_ZERO_ERROR = "Cannot divide by zero."
+
+
+# Arithmetic operations functions
 def subtract(a, b):
     return a - b
 
 
-# 곱하기 함수
 def multiply(a, b):
     return a * b
 
 
-# 나누기 함수
 def divide(a, b):
     if b == 0:
-        raise ValueError("0으로 나눌 수 없습니다.")
+        raise ValueError(DIVIDE_BY_ZERO_ERROR)
     return a / b
+
 
 def power(a, b):
     return a ** b
 
-def mod(a, b):
+
+def modulus(a, b):
     return a % b
 
-# 함수 사용 예시
+
+# Example usage
 if __name__ == "__main__":
-    print("빼기:", subtract(10, 5))
-    print("곱하기:", multiply(10, 5))
-    print("나누기:", divide(10, 5))
+    operations = {
+        "Subtraction": subtract,
+        "Multiplication": multiply,
+        "Division": divide,
+    }
+
+    a, b = 10, 5
+    for operation_name, operation_func in operations.items():
+        print(f"{operation_name}: {operation_func(a, b)}")
